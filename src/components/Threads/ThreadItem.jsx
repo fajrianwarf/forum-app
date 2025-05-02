@@ -46,7 +46,7 @@ function ThreadItem(props) {
           </Typography>
         </Typography>
         <Typography fontWeight='bold'>{title}</Typography>
-        <Typography>{parser(body)}</Typography>
+        <Typography component='div'>{parser(body)}</Typography>
         <Typography component='span' fontWeight='bold' color='blue'>
           #{category}
         </Typography>

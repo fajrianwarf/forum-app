@@ -65,7 +65,7 @@ function DetailThread() {
         <Typography variant='h4' fontWeight='bold' textAlign='left' mb={2}>
           {title}
         </Typography>
-        <Typography textAlign='left' mb={1}>
+        <Typography textAlign='left' mb={1} component='div'>
           {parser(body)}
         </Typography>
         <Typography

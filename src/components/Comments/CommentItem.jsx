@@ -25,7 +25,7 @@ function CommentItem(props) {
         </Box>
       </Box>
       <Box mt={2}>
-        <Typography>{parser(content)}</Typography>
+        <Typography component='div'>{parser(content)}</Typography>
       </Box>
       <VoteActions
         threadId={threadDetail.id}
