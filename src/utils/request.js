@@ -7,9 +7,9 @@ async function submit(method, url, body = null, customHeaders = {}) {
     'Content-Type': 'application/json',
     ...customHeaders,
   };
-  
+
   const token = sessionStorage.getItem(STORE_KEY);
-  if (token) headers['Authorization'] = `Bearer ${token}`;
+  if (token) headers.Authorization = `Bearer ${token}`;
 
   const config = {
     method,
@@ -27,7 +27,7 @@ async function submit(method, url, body = null, customHeaders = {}) {
     const responseData = isJSON ? await res.json() : {};
 
     if (!res.ok) {
-      let errorMsg = responseData.message || `Error ${res.status}`;
+      const errorMsg = responseData.message || `Error ${res.status}`;
 
       switch (res.status) {
         case 401:
@@ -35,6 +35,8 @@ async function submit(method, url, body = null, customHeaders = {}) {
           break;
         case 500:
           history.navigate(path.serverError);
+          break;
+        default:
           break;
       }
 

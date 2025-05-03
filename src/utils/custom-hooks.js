@@ -39,7 +39,7 @@ function useForm({ initialValues = {}, validate = {} }) {
 
   const validators = {
     required: (value) => (value ? null : 'This field is required.'),
-    email: (value) => (emailRegex().test(value) ? null : 'Invalid email format.'),
+    email: (value) => (emailRegex.test(value) ? null : 'Invalid email format.'),
     min: (minLength) => (value) =>
       value?.length >= minLength
         ? null
@@ -55,11 +55,10 @@ function useForm({ initialValues = {}, validate = {} }) {
   const validateForm = () => {
     const validationErrors = {};
 
-    for (const field in validate) {
-      const rules = validate[field];
+    Object.entries(validate).forEach(([field, rules]) => {
       const value = form[field];
 
-      for (const rule of rules) {
+      rules.some((rule) => {
         let error = null;
 
         if (typeof rule === 'string') {
@@ -73,10 +72,12 @@ function useForm({ initialValues = {}, validate = {} }) {
 
         if (error) {
           validationErrors[field] = error;
-          break;
+          return true;
         }
-      }
-    }
+
+        return false;
+      });
+    });
 
     setErrors(validationErrors);
     return validationErrors;

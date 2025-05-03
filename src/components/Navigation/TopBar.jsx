@@ -1,5 +1,11 @@
 import React from 'react';
-import { AppBar, IconButton, Toolbar, Typography, useTheme } from '@mui/material';
+import {
+  AppBar,
+  IconButton,
+  Toolbar,
+  Typography,
+  useTheme,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
 function TopBar(props) {
@@ -8,7 +14,7 @@ function TopBar(props) {
 
   return (
     <AppBar
-      position="fixed"
+      position='fixed'
       sx={{
         zIndex: theme.zIndex.drawer + 1,
         transition: theme.transitions.create(['width', 'margin'], {
@@ -45,6 +51,6 @@ function TopBar(props) {
       </Toolbar>
     </AppBar>
   );
-};
+}
 
 export { TopBar };

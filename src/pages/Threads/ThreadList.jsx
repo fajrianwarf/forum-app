@@ -19,7 +19,7 @@ function ThreadList() {
   const categories = [...new Set(threadList.map((thread) => thread.category))];
 
   const filteredThreads = threadList.filter((thread) =>
-    selectedCategory ? thread.category === selectedCategory : true
+    selectedCategory ? thread.category === selectedCategory : true,
   );
 
   useEffect(() => {

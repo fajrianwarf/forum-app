@@ -33,7 +33,7 @@ function CommentItem(props) {
         upVotesBy={upVotesBy}
         downVotesBy={downVotesBy}
         dataType='comments'
-        sx={{ mt: 1}}
+        sx={{ mt: 1 }}
       />
       <Divider sx={{ mt: 2 }} />
     </Box>

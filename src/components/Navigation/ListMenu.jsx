@@ -73,6 +73,6 @@ function ListMenu(props) {
       </ListItemButton>
     </ListItem>
   );
-};
+}
 
 export { ListMenu };

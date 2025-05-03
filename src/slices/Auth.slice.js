@@ -3,6 +3,11 @@ import { AuthService } from '@services/Auth';
 import { status, STORE_KEY } from '@utils/constants';
 import { toast } from 'react-toastify';
 
+const getOwnProfileAct = createAsyncThunk('Auth/profile', async () => {
+  const response = await AuthService.getOwnProfile();
+  return response;
+});
+
 const loginAct = createAsyncThunk('Auth/login', async (payload, thunkAPI) => {
   const response = await AuthService.login(payload);
 
@@ -21,11 +26,6 @@ const registerAct = createAsyncThunk('Auth/register', async (payload) => {
   return response;
 });
 
-const getOwnProfileAct = createAsyncThunk('Auth/profile', async () => {
-  const response = await AuthService.getOwnProfile();
-  return response;
-});
-
 const initialState = {
   statusLogin: status.idle,
   statusRegister: status.idle,
@@ -38,12 +38,13 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    resetData: (state, action) => {
-      const payload = action.payload;
+    resetData: (state, { payload }) => {
       if (typeof payload === 'string') {
         state[payload] = initialState[payload];
       } else if (Array.isArray(payload)) {
-        payload.forEach((item) => (state[item] = initialState[item]));
+        payload.forEach((item) => {
+          state[item] = initialState[item];
+        });
       }
     },
     logout: (state) => {

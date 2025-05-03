@@ -18,12 +18,12 @@ function LogoutConfirmation(props) {
       slotProps={{
         paper: {
           sx: {
-            p: .5,
+            p: 0.5,
           },
         },
       }}
     >
-      <DialogTitle sx={{p: 1}}>Confirm Logout</DialogTitle>
+      <DialogTitle sx={{ p: 1 }}>Confirm Logout</DialogTitle>
       <Divider />
       <DialogContent>
         <DialogContentText>Are you sure you want to logout?</DialogContentText>

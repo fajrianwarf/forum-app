@@ -55,6 +55,6 @@ function ButtonCreateThread() {
       </Box>
     </>
   );
-};
+}
 
 export { ButtonCreateThread };

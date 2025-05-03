@@ -1,19 +1,6 @@
 import { BASE_URL } from '@utils/constants';
 import { submit } from '@utils/request';
 
-const ThreadsService = {
-  getThreadList,
-  getThreadDetail,
-  createThread,
-  createComment,
-  upVoteThread,
-  downVoteThread,
-  neutralVoteThread,
-  upVoteComment,
-  downVoteComment,
-  neutralVoteComment,
-};
-
 function getThreadList() {
   return submit('GET', `${BASE_URL}/threads`, {});
 }
@@ -47,7 +34,7 @@ function upVoteComment({ threadId, commentId }) {
   return submit(
     'POST',
     `${BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`,
-    {}
+    {},
   );
 }
 
@@ -55,7 +42,7 @@ function downVoteComment({ threadId, commentId }) {
   return submit(
     'POST',
     `${BASE_URL}/threads/${threadId}/comments/${commentId}/down-vote`,
-    {}
+    {},
   );
 }
 
@@ -63,8 +50,21 @@ function neutralVoteComment({ threadId, commentId }) {
   return submit(
     'POST',
     `${BASE_URL}/threads/${threadId}/comments/${commentId}/neutral-vote`,
-    {}
+    {},
   );
 }
+
+const ThreadsService = {
+  getThreadList,
+  getThreadDetail,
+  createThread,
+  createComment,
+  upVoteThread,
+  downVoteThread,
+  neutralVoteThread,
+  upVoteComment,
+  downVoteComment,
+  neutralVoteComment,
+};
 
 export { ThreadsService };

@@ -12,7 +12,6 @@ import { StyledEngineProvider } from '@mui/material';
 import { store } from './store/index.js';
 import App from './App.jsx';
 
-
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <StyledEngineProvider injectFirst>
@@ -22,5 +21,5 @@ createRoot(document.getElementById('root')).render(
         </BrowserRouter>
       </Provider>
     </StyledEngineProvider>
-  </StrictMode>
+  </StrictMode>,
 );

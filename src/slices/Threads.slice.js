@@ -23,7 +23,7 @@ const createCommentAct = createAsyncThunk(
     const response = await ThreadsService.createComment(payload);
     if (response) await dispatch(getThreadDetailAct(payload.threadId));
     return response;
-  }
+  },
 );
 
 const upVoteThreadAct = createAsyncThunk(
@@ -35,7 +35,7 @@ const upVoteThreadAct = createAsyncThunk(
     } catch {
       return rejectWithValue({ threadId, userId });
     }
-  }
+  },
 );
 
 const downVoteThreadAct = createAsyncThunk(
@@ -47,7 +47,7 @@ const downVoteThreadAct = createAsyncThunk(
     } catch {
       return rejectWithValue({ threadId, userId });
     }
-  }
+  },
 );
 
 const neutralVoteThreadAct = createAsyncThunk(
@@ -59,7 +59,7 @@ const neutralVoteThreadAct = createAsyncThunk(
     } catch {
       return rejectWithValue({ threadId, userId, voteType });
     }
-  }
+  },
 );
 
 const upVoteCommentAct = createAsyncThunk(
@@ -71,7 +71,7 @@ const upVoteCommentAct = createAsyncThunk(
     } catch {
       return rejectWithValue({ threadId, userId });
     }
-  }
+  },
 );
 
 const downVoteCommentAct = createAsyncThunk(
@@ -83,7 +83,7 @@ const downVoteCommentAct = createAsyncThunk(
     } catch {
       return rejectWithValue({ threadId, userId });
     }
-  }
+  },
 );
 
 const neutralVoteCommentAct = createAsyncThunk(
@@ -95,7 +95,7 @@ const neutralVoteCommentAct = createAsyncThunk(
     } catch {
       return rejectWithValue({ threadId, userId, voteType });
     }
-  }
+  },
 );
 
 const initialState = {
@@ -111,30 +111,33 @@ const threadsSlice = createSlice({
   name: 'threads',
   initialState,
   reducers: {
-    resetData: (state, action) => {
-      const payload = action.payload;
+    resetData: (state, { payload }) => {
       if (typeof payload === 'string') {
         state[payload] = initialState[payload];
       } else if (Array.isArray(payload)) {
-        payload.forEach((item) => (state[item] = initialState[item]));
+        payload.forEach((item) => {
+          state[item] = initialState[item];
+        });
       }
     },
-    optimisticVote: (state, action) => {
+    optimisticVote: (state, { payload }) => {
       const {
         threadId,
         commentId,
         voteType,
         userId,
         dataType = 'threadList',
-      } = action.payload;
+      } = payload;
       let thread = {};
       if (dataType === 'threadList') {
-        thread = state[dataType].find((thread) => thread.id === threadId);
+        thread = state[dataType].find(
+          (threadItem) => threadItem.id === threadId,
+        );
       } else if (dataType === 'threadDetail') {
         thread = state[dataType];
       } else if (dataType === 'comments') {
         thread = state.threadDetail[dataType].find(
-          (comments) => comments.id === commentId
+          (comments) => comments.id === commentId,
         );
       }
 
@@ -165,9 +168,9 @@ const threadsSlice = createSlice({
         state.statusList = status.loading;
         state.threadList = [];
       })
-      .addCase(getThreadListAct.fulfilled, (state, action) => {
+      .addCase(getThreadListAct.fulfilled, (state, { payload }) => {
         state.statusList = status.success;
-        state.threadList = action.payload?.data?.threads ?? [];
+        state.threadList = payload?.data?.threads ?? [];
       })
       .addCase(getThreadListAct.rejected, (state) => {
         state.statusList = status.error;
@@ -176,9 +179,9 @@ const threadsSlice = createSlice({
         state.statusDetail = status.loading;
         state.threadDetail = {};
       })
-      .addCase(getThreadDetailAct.fulfilled, (state, action) => {
+      .addCase(getThreadDetailAct.fulfilled, (state, { payload }) => {
         state.statusDetail = status.success;
-        state.threadDetail = action.payload?.data?.detailThread ?? {};
+        state.threadDetail = payload?.data?.detailThread ?? {};
       })
       .addCase(getThreadDetailAct.rejected, (state) => {
         state.statusDetail = status.error;
@@ -201,68 +204,72 @@ const threadsSlice = createSlice({
       .addCase(createCommentAct.rejected, (state) => {
         state.statusComment = status.error;
       })
-      .addCase(upVoteThreadAct.rejected, (state, action) => {
-        const { threadId, userId } = action.payload;
-        const thread = state.threadList.find((t) => t.id === threadId);
-        const threadDetail = state.threadDetail;
-        if (!thread || !threadDetail) return;
+      .addCase(
+        upVoteThreadAct.rejected,
+        ({ threadList, threadDetail }, { payload }) => {
+          const { threadId, userId } = payload;
+          const thread = threadList.find((t) => t.id === threadId);
+          if (!thread || !threadDetail) return;
 
-        thread.upVotesBy = thread.upVotesBy.filter((id) => id !== userId);
-        threadDetail.upVotesBy = threadDetail.upVotesBy.filter(
-          (id) => id !== userId
-        );
-      })
-      .addCase(downVoteThreadAct.rejected, (state, action) => {
-        const { threadId, userId } = action.payload;
-        const thread = state.threadList.find(
-          (thread) => thread.id === threadId
-        );
-        const threadDetail = state.threadDetail;
-        if (!thread || !threadDetail) return;
+          thread.upVotesBy = thread.upVotesBy.filter((id) => id !== userId);
+          threadDetail.upVotesBy = threadDetail.upVotesBy.filter(
+            (id) => id !== userId,
+          );
+        },
+      )
+      .addCase(
+        downVoteThreadAct.rejected,
+        ({ threadList, threadDetail }, { payload }) => {
+          const { threadId, userId } = payload;
+          const thread = threadList.find(({ id }) => id === threadId);
+          if (!thread || !threadDetail) return;
 
-        thread.downVotesBy = thread.downVotesBy.filter((id) => id !== userId);
-        threadDetail.downVotesBy = threadDetail.downVotesBy.filter(
-          (id) => id !== userId
-        );
-      })
-      .addCase(neutralVoteThreadAct.rejected, (state, action) => {
-        const { threadId, userId, voteType } = action.payload;
-        const thread = state.threadList.find(
-          (thread) => thread.id === threadId
-        );
-        const threadDetail = state.threadDetail;
-        if (!thread || !threadDetail) return;
+          thread.downVotesBy = thread.downVotesBy.filter((id) => id !== userId);
+          threadDetail.downVotesBy = threadDetail.downVotesBy.filter(
+            (id) => id !== userId,
+          );
+        },
+      )
+      .addCase(
+        neutralVoteThreadAct.rejected,
+        ({ threadList, threadDetail }, { payload }) => {
+          const { threadId, userId, voteType } = payload;
+          const thread = threadList.find(
+            (threadItem) => threadItem.id === threadId,
+          );
+          if (!thread || !threadDetail) return;
 
-        if (voteType === 'upvote') {
-          thread.upVotesBy.push(userId);
-          threadDetail.upVotesBy.push(userId);
-        } else if (voteType === 'downvote') {
-          thread.downVotesBy.push(userId);
-          threadDetail.downVotesBy.push(userId);
-        }
-      })
-      .addCase(upVoteCommentAct.rejected, (state, action) => {
-        const { userId, commentId } = action.payload;
+          if (voteType === 'upvote') {
+            thread.upVotesBy.push(userId);
+            threadDetail.upVotesBy.push(userId);
+          } else if (voteType === 'downvote') {
+            thread.downVotesBy.push(userId);
+            threadDetail.downVotesBy.push(userId);
+          }
+        },
+      )
+      .addCase(upVoteCommentAct.rejected, (state, { payload }) => {
+        const { userId, commentId } = payload;
         const thread = state.threadDetail.comments.find(
-          (t) => t.id === commentId
+          ({ id }) => id === commentId,
         );
         if (!thread) return;
 
         thread.upVotesBy = thread.upVotesBy.filter((id) => id !== userId);
       })
-      .addCase(downVoteCommentAct.rejected, (state, action) => {
-        const { userId, commentId } = action.payload;
+      .addCase(downVoteCommentAct.rejected, (state, { payload }) => {
+        const { userId, commentId } = payload;
         const thread = state.threadDetail.comments.find(
-          (t) => t.id === commentId
+          ({ id }) => id === commentId,
         );
         if (!thread) return;
 
         thread.downVotesBy = thread.downVotesBy.filter((id) => id !== userId);
       })
-      .addCase(neutralVoteCommentAct.rejected, (state, action) => {
-        const { userId, voteType, commentId } = action.payload;
+      .addCase(neutralVoteCommentAct.rejected, (state, { payload }) => {
+        const { userId, voteType, commentId } = payload;
         const thread = state.threadDetail.comments.find(
-          (t) => t.id === commentId
+          ({ id }) => id === commentId,
         );
         if (!thread) return;
 

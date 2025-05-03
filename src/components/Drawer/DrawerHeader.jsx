@@ -17,6 +17,6 @@ function DrawerHeader({ children }) {
       {children}
     </Box>
   );
-};
+}
 
 export { DrawerHeader };

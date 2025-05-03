@@ -115,7 +115,11 @@ function BaseLayout(props) {
             </>
           ) : (
             unauthenticated.map((unauthenticatedProps) => (
-              <ListMenu key={unauthenticatedProps.id} open={open} {...unauthenticatedProps} />
+              <ListMenu
+                key={unauthenticatedProps.id}
+                open={open}
+                {...unauthenticatedProps}
+              />
             ))
           )}
         </List>

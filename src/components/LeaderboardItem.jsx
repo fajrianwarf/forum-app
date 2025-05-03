@@ -31,7 +31,7 @@ function LeaderboardItem(props) {
           {score} pts
         </Typography>
       </ListItem>
-      
+
       {!isLast && <Divider />}
     </>
   );

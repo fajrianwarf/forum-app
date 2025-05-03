@@ -10,7 +10,7 @@ import { status } from '@utils/constants';
 const Leaderboards = () => {
   const dispatch = useDispatch();
   const { statusList, leaderboardList } = useSelector(
-    (state) => state.leaderboards
+    (state) => state.leaderboards,
   );
 
   useEffect(() => {

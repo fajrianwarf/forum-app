@@ -19,6 +19,6 @@ function PageLoader() {
       />
     </Box>
   );
-};
+}
 
 export { PageLoader };

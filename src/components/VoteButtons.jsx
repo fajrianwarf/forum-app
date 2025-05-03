@@ -57,13 +57,13 @@ function VoteActions(props) {
         dispatch(
           commentId
             ? upVoteCommentAct(votePayload)
-            : upVoteThreadAct(votePayload)
+            : upVoteThreadAct(votePayload),
         );
       } else {
         dispatch(
           commentId
             ? downVoteCommentAct(votePayload)
-            : downVoteThreadAct(votePayload)
+            : downVoteThreadAct(votePayload),
         );
       }
     }
