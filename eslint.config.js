@@ -1,6 +1,6 @@
 import js from '@eslint/js';
 import globals from 'globals';
-import airbnb from 'eslint-config-airbnb';
+import dicoding from 'eslint-config-dicodingacademy';
 import prettier from 'eslint-config-prettier';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -9,6 +9,7 @@ import importPlugin from 'eslint-plugin-import';
 
 export default [
   js.configs.recommended,
+  dicoding,
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
@@ -48,7 +49,6 @@ export default [
       },
     },
     rules: {
-      ...airbnb.rules,
       ...prettier.rules,
       'react-refresh/only-export-components': [
         'warn',

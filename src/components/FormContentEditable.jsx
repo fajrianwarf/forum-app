@@ -6,7 +6,7 @@ function FormContentEditable(props) {
   const [focused, setFocused] = useState(false);
 
   const handleInput = (e) => {
-    let html = e.currentTarget.innerHTML;
+    const html = e.currentTarget.innerHTML;
 
     const cleaned = html
       .replace(/<br\s*\/?>/gi, '')
