@@ -32,6 +32,9 @@ export default [
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
     },
+    env : {
+      "jest": true
+    },
     settings: {
       'import/resolver': {
         alias: {

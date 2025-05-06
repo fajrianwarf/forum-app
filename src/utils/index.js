@@ -44,5 +44,6 @@ function formatLongDateTime(dateString) {
 }
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const clone = (data) => JSON.parse(JSON.stringify(data));
 
-export { formatDate, formatLongDateTime, emailRegex };
+export { formatDate, formatLongDateTime, emailRegex, clone };

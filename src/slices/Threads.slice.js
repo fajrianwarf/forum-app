@@ -285,6 +285,7 @@ const threadsSlice = createSlice({
 const { resetData, optimisticVote } = threadsSlice.actions;
 const threadsReducer = threadsSlice.reducer;
 export {
+  initialState,
   getThreadListAct,
   getThreadDetailAct,
   createThreadAct,

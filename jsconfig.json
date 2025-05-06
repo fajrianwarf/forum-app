@@ -9,7 +9,10 @@
       "@store/*": ["store/*"],
       "@utils/*": ["utils/*"],
       "@assets/*": ["assets/*"]
-    }
+    },
+    "module": "esnext",
+    "target": "es2020",
+    "allowJs": true, 
   },
   "include": ["src"]
 }
