@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "serve": "serve -s dist",
     "format": "prettier --write \"src/**/*.{js,ts,jsx,tsx,json,css,scss,md}\"",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -34,6 +34,8 @@
     "@babel/preset-react": "^7.27.1",
     "@eslint/js": "^9.26.0",
     "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/jest": "^29.5.14",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",

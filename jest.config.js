@@ -12,4 +12,6 @@ export default {
     '^@utils/(.*)$': '<rootDir>/src/utils/$1',
     '^@assets/(.*)$': '<rootDir>/src/assets/$1',
   },
+  extensionsToTreatAsEsm: ['.jsx'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom']
 };
