@@ -18,6 +18,7 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.node,
+        ...globals.jest,
         Intl: 'readonly',
       },
       parserOptions: {
@@ -31,9 +32,6 @@ export default [
       import: importPlugin,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
-    },
-    env : {
-      "jest": true
     },
     settings: {
       'import/resolver': {
