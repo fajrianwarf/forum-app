@@ -30,6 +30,7 @@ function ThreadItem(props) {
   return (
     <Box
       display='flex'
+      data-testid='thread-item'
       p={2}
       flexDirection='row'
       borderBottom='1px solid #e0e0e0'
@@ -37,7 +38,11 @@ function ThreadItem(props) {
       component='div'
       onClick={toDetail}
     >
-      <Avatar alt={name} src={userDetail.avatar} />
+      <Avatar
+        alt={name}
+        src={userDetail.avatar}
+        data-testid='thread-item__avatar'
+      />
       <Box ml={2} flex={1} sx={{ textAlign: 'left' }}>
         <Typography fontWeight='bold'>
           {userDetail.name}&nbsp;
@@ -47,7 +52,12 @@ function ThreadItem(props) {
         </Typography>
         <Typography fontWeight='bold'>{title}</Typography>
         <Typography component='div'>{parser(body)}</Typography>
-        <Typography component='span' fontWeight='bold' color='blue'>
+        <Typography
+          component='span'
+          fontWeight='bold'
+          color='blue'
+          data-testid='thread-item__category'
+        >
           #{category}
         </Typography>
         <Box display='flex'>

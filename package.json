@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "serve": "serve -s dist",
     "format": "prettier --write \"src/**/*.{js,ts,jsx,tsx,json,css,scss,md}\"",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose",
+    "e2e": "cypress run"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -41,10 +42,12 @@
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
     "babel-jest": "^29.7.0",
+    "cypress": "^14.3.3",
     "eslint": "^9.0.0",
     "eslint-config-dicodingacademy": "^0.9.4",
     "eslint-config-prettier": "^10.1.2",
     "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-cypress": "^4.3.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",

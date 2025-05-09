@@ -21,6 +21,7 @@ function ButtonCreateThread() {
         }}
       >
         <Button
+          data-testid='create-thread-button'
           onClick={() => navigate(path.createThread)}
           variant='contained'
           color='primary'

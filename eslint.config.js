@@ -6,9 +6,11 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import importPlugin from 'eslint-plugin-import';
+import pluginCypress from 'eslint-plugin-cypress';
 
 export default [
   js.configs.recommended,
+  pluginCypress.configs.recommended,
   dicoding,
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
@@ -51,6 +53,7 @@ export default [
     },
     rules: {
       ...prettier.rules,
+      'import/no-extraneous-dependencies': 'off',
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
