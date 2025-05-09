@@ -21,7 +21,7 @@ function FormContentEditable(props) {
     <Box mt={2} {...rest}>
       {label && <Typography variant='subtitle2'>{label}</Typography>}
       <Box
-        role="textbox"
+        role='textbox'
         contentEditable
         suppressContentEditableWarning
         name={name}

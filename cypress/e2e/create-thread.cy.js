@@ -26,8 +26,8 @@ describe('Create Thread Page', () => {
     cy.get('input[name="category"]').type(threadCategory);
     cy.get('[contenteditable][name="body"]').type(threadContent);
 
+    cy.get('button[type="submit"]').click();
     cy.get('button[type="submit"]')
-      .click()
       .should('be.disabled')
       .and('contain.text', 'Posting...');
 

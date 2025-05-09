@@ -11,4 +11,4 @@ export const newThreadListObject = {
   totalComments: 0,
   upVotesBy: [USER_ID],
   downVotesBy: [],
-}; 
+};

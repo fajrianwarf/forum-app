@@ -10,10 +10,9 @@ import pluginCypress from 'eslint-plugin-cypress';
 
 export default [
   js.configs.recommended,
-  pluginCypress.configs.recommended,
   dicoding,
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
+    files: ['**/*.{js,jsx,ts,tsx}', '**/*.cy.{js,jsx,ts,tsx}', 'cypress/**/*.js'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -21,6 +20,9 @@ export default [
         ...globals.browser,
         ...globals.node,
         ...globals.jest,
+        ...globals.mocha,
+        ...globals.cypress,
+        cy: true,
         Intl: 'readonly',
       },
       parserOptions: {
@@ -34,6 +36,7 @@ export default [
       import: importPlugin,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      cypress: pluginCypress,
     },
     settings: {
       'import/resolver': {
@@ -53,6 +56,7 @@ export default [
     },
     rules: {
       ...prettier.rules,
+      ...pluginCypress.configs.recommended.rules,
       'import/no-extraneous-dependencies': 'off',
       'react-refresh/only-export-components': [
         'warn',
@@ -62,12 +66,7 @@ export default [
       'import/prefer-default-export': 'off',
       'no-control-regex': 'off',
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-      'no-underscore-dangle': [
-        'error',
-        {
-          allow: ['__dirname', '__filename'],
-        },
-      ],
+      'no-underscore-dangle': ['error', { allow: ['__dirname', '__filename'] }],
       'no-param-reassign': [
         'error',
         {

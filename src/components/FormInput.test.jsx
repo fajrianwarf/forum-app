@@ -8,11 +8,11 @@ describe('FormInput', () => {
   it('renders label and value correctly', () => {
     render(
       <FormInput
-        name="email"
-        label="Email"
-        value="test@example.com"
+        name='email'
+        label='Email'
+        value='test@example.com'
         onChange={() => {}}
-      />
+      />,
     );
 
     expect(screen.getByLabelText('Email')).toBeInTheDocument();
@@ -22,12 +22,12 @@ describe('FormInput', () => {
   it('shows error message if error is passed', () => {
     render(
       <FormInput
-        name="email"
-        label="Email"
-        value=""
-        error="Email is required"
+        name='email'
+        label='Email'
+        value=''
+        error='Email is required'
         onChange={() => {}}
-      />
+      />,
     );
 
     expect(screen.getByText('Email is required')).toBeInTheDocument();
@@ -36,13 +36,13 @@ describe('FormInput', () => {
   it('toggles password visibility when icon clicked', () => {
     render(
       <FormInput
-        name="password"
-        label="Password"
-        type="password"
-        value="secret"
+        name='password'
+        label='Password'
+        type='password'
+        value='secret'
         showToggle={true}
         onChange={() => {}}
-      />
+      />,
     );
 
     const input = screen.getByLabelText('Password');
@@ -60,16 +60,16 @@ describe('FormInput', () => {
     const handleChange = jest.fn();
     render(
       <FormInput
-        name="username"
-        label="Username"
-        value=""
+        name='username'
+        label='Username'
+        value=''
         onChange={handleChange}
-      />
+      />,
     );
-  
+
     const input = screen.getByLabelText('Username');
     await userEvent.type(input, 'admin');
-  
+
     expect(handleChange).toHaveBeenCalledTimes(5);
   });
 });

@@ -7,10 +7,10 @@ describe('FormContentEditable', () => {
   it('renders with label correctly', () => {
     render(
       <FormContentEditable
-        name="content"
-        label="Content"
+        name='content'
+        label='Content'
         onChange={() => {}}
-      />
+      />,
     );
 
     expect(screen.getByText('Content')).toBeInTheDocument();
@@ -22,10 +22,10 @@ describe('FormContentEditable', () => {
 
     render(
       <FormContentEditable
-        name="content"
-        label="Content"
+        name='content'
+        label='Content'
         onChange={handleChange}
-      />
+      />,
     );
 
     const editableBox = screen.getByRole('textbox');
@@ -46,10 +46,10 @@ describe('FormContentEditable', () => {
 
     render(
       <FormContentEditable
-        name="summary"
-        label="Summary"
+        name='summary'
+        label='Summary'
         onChange={handleChange}
-      />
+      />,
     );
 
     const editableBox = screen.getByRole('textbox');
@@ -70,11 +70,11 @@ describe('FormContentEditable', () => {
   it('shows error text when error prop is passed', () => {
     render(
       <FormContentEditable
-        name="content"
-        label="Content"
-        error="This field is required"
+        name='content'
+        label='Content'
+        error='This field is required'
         onChange={() => {}}
-      />
+      />,
     );
 
     expect(screen.getByText('This field is required')).toBeInTheDocument();

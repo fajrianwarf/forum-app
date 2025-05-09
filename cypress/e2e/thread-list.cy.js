@@ -32,10 +32,12 @@ describe('Thread List Page', () => {
 
   it('shows Create Thread button when logged in', () => {
     cy.login();
+
     cy.get('button[data-testid="create-thread-button"]')
-      .trigger('mouseover')
-      .within(() => {
-        cy.contains('Create Thread').should('be.visible');
-      });
+      .trigger('mouseover');
+    cy.get('button[data-testid="create-thread-button"]').within(() => {
+      cy.contains('Create Thread').should('be.visible');
+    });
+
   });
 });

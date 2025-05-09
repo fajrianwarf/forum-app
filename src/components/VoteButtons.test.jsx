@@ -4,10 +4,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { jest } from '@jest/globals';
 import { render, screen, fireEvent, act } from '@testing-library/react';
-import {
-  optimisticVote,
-  threadsReducer,
-} from '@slices/Threads.slice.js';
+import { optimisticVote, threadsReducer } from '@slices/Threads.slice.js';
 
 jest.unstable_mockModule('react-toastify', () => ({
   toast: {
