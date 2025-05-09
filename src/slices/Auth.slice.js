@@ -26,7 +26,7 @@ const registerAct = createAsyncThunk('Auth/register', async (payload) => {
   return response;
 });
 
-const initialState = {
+export const initialState = {
   statusLogin: status.idle,
   statusRegister: status.idle,
   statusProfile: status.idle,
