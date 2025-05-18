@@ -1,5 +1,3 @@
-import Cypress from 'cypress';
-
 Cypress.Commands.add(
   'login',
   (email = 'test777@mail.com', password = 'test777') => {
@@ -8,6 +6,9 @@ Cypress.Commands.add(
     cy.get('input[name="password"]').type(password);
     cy.get('button[type="submit"]').click();
 
+    cy.get('div')
+      .contains(/^Threads App$/)
+      .should('be.visible');
     cy.url().should('not.include', '/login');
   },
 );

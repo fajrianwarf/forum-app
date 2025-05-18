@@ -14,7 +14,7 @@
     "e2e": "cypress run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "ci:test": "node --experimental-vm-modules node_modules/jest/bin/jest.js && start-server-and-test dev http-get://0.0.0.0:5173 e2e"
+    "ci:test": "node --experimental-vm-modules node_modules/jest/bin/jest.js && start-server-and-test dev http://localhost:5173 e2e"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
