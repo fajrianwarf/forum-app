@@ -23,6 +23,7 @@ export default [
         ...globals.mocha,
         ...globals.cypress,
         cy: true,
+        Cypress: true,
         Intl: 'readonly',
       },
       parserOptions: {

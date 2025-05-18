@@ -1,5 +1,3 @@
-import Cypress from 'cypress';
-
 Cypress.Commands.add(
   'login',
   (email = 'test777@mail.com', password = 'test777') => {
