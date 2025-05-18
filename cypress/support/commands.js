@@ -6,6 +6,9 @@ Cypress.Commands.add(
     cy.get('input[name="password"]').type(password);
     cy.get('button[type="submit"]').click();
 
+    cy.get('div')
+      .contains(/^Threads App$/)
+      .should('be.visible');
     cy.url().should('not.include', '/login');
   },
 );
