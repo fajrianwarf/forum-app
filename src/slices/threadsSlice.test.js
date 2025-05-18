@@ -52,7 +52,7 @@ describe('threadsReducer - reducer', () => {
 
       const nextState = threadsReducer(state, resetData('statusList'));
 
-      expect(nextState.statusList).toBe(initialState.threadList);
+      expect(nextState.statusList).toBe(initialState.statusList);
     });
 
     it('should reset multiple fields to initialState', () => {
