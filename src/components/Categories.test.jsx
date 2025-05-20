@@ -3,6 +3,16 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { Categories } from './Categories';
 import { jest } from '@jest/globals';
 
+/**
+ * scenario testing
+ *
+ * - Categories component
+ *   - renders category buttons correctly
+ *   - highlights the selected category correctly
+ *   - calls onSelect with category name when clicked and highlighted it
+ *   - deselects category when clicking on selected one again and remove highlight
+ */
+
 describe('Categories', () => {
   const mockCategories = ['react', 'redux', 'dicoding'];
 

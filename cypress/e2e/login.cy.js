@@ -1,3 +1,14 @@
+/**
+ * scenario testing
+ * 
+ * - Login Page spec
+ *   - renders the login form correctly
+ *   - shows validation errors if fields are empty
+ *   - shows errors email format and password length
+ *   - submits the form with valid input
+ *   - navigates to register page on link click
+ */
+
 describe('Login Page', () => {
   beforeEach(() => {
     cy.visit('http://localhost:5173/login');
@@ -35,11 +46,14 @@ describe('Login Page', () => {
     cy.get('input[name="password"]').type('test777');
     cy.get('button[type="submit"]').click();
 
+    cy.get('.blink-blur-indicator', { timeout: 10000 }).should('exist');
+    cy.get('.blink-blur-indicator', { timeout: 10000 }).should('not.exist');
+
     cy.get('div')
-      .contains(/^Threads App$/)
+      .contains(/^Categories$/)
       .should('be.visible');
     
-    cy.get('[class*=MuiAvatar-img], img[alt="test888"]').should('be.visible');
+    cy.get('[class*=MuiAvatar-img], img[alt="test777"]').should('be.visible');
     cy.get('[class*=MuiSvgIcon-root], [data-testid="logoutIcon"]').should('be.visible');
   });
 

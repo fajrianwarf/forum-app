@@ -9,6 +9,15 @@ const mockUser = {
   avatar: 'https://ui-avatars.com/api/?name=john&background=random',
 };
 
+/**
+ * scenario testing
+ *
+ * - LeaderboardItem component
+ *   - renders name, email, and score correctly
+ *   - does not render Divider if isLast is true
+ *   - renders Divider if isLast is false
+ */
+
 describe('LeaderboardItem', () => {
   it('renders name, email, and score correctly', () => {
     render(

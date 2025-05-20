@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box, Typography, List, Paper } from '@mui/material';
 import { LeaderboardItem } from '@components/LeaderboardItem';
 import { PageLoader } from '@components/PageLoader';
-import { getLeaderboardsAct } from '@slices/Leaderboards';
+import { getLeaderboardsAct } from '@slices/Leaderboards.slice';
 import { status } from '@utils/constants';
 
 const Leaderboards = () => {

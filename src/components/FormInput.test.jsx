@@ -4,6 +4,16 @@ import userEvent from '@testing-library/user-event';
 import { jest } from '@jest/globals';
 import { FormInput } from './FormInput';
 
+/**
+ * scenario testing
+ *
+ * - FormInput component
+ *   - renders label and value correctly
+ *   - shows error message if error is passed
+ *   - toggles password visibility when icon clicked
+ *   - calls onChange when typing
+ */
+
 describe('FormInput', () => {
   it('renders label and value correctly', () => {
     render(

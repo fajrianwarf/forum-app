@@ -3,6 +3,16 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { FormContentEditable } from './FormContentEditable';
 import { jest } from '@jest/globals';
 
+/**
+ * scenario testing
+ *
+ * - FormContentEditable component
+ *   - renders with label correctly
+ *   - fires onChange with input HTML content and passed correctly
+ *   - cleans up <br> before sending to onChange
+ *   - shows error text when error prop is passed
+ */
+
 describe('FormContentEditable', () => {
   it('renders with label correctly', () => {
     render(

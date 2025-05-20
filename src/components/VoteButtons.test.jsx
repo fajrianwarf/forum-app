@@ -38,6 +38,16 @@ const mockStore = (authState = { ...initFormStore }) => {
   });
 };
 
+/**
+ * scenario testing
+ *
+ * - VoteActions component
+ *   - renders vote buttons correcly
+ *   - displays toast error after clicked button when not logged in
+ *   - dispatches vote actions when clicked
+ *   - shows filled upvote icon if already upvoted
+ */
+
 describe('VoteActions', () => {
   beforeEach(() => {
     toast.error.mockClear();
