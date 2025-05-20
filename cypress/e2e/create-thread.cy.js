@@ -1,3 +1,12 @@
+/**
+ * scenario testing
+ * 
+ * - Create Thread Page spec
+ *   - renders the thread form correctly
+ *   - shows validation errors when required fields are empty
+ *   - submits the form with valid input and navigates away
+ */
+
 describe('Create Thread Page', () => {
   const threadTitle = 'Thread Title';
   const threadCategory = 'General';

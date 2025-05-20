@@ -1,3 +1,12 @@
+/**
+ * scenario testing
+ * 
+ * - Thread List Page spec
+ *   - renders categories and threads
+ *   - filters threads when clicking a category
+ *   - shows Create Thread button when logged in
+ */
+
 describe('Thread List Page', () => {
   beforeEach(() => {
     cy.visit('http://localhost:5173');

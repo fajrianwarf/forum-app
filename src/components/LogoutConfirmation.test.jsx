@@ -3,6 +3,16 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { LogoutConfirmation } from './LogoutConfirmation';
 import { jest } from '@jest/globals';
 
+/**
+ * scenario testing
+ *
+ * - LogoutConfirmation component
+ *   - renders dialog with correct text
+ *   - calls onClose when Cancel button is clicked
+ *   - calls onConfirm when Logout button is clicked
+ *   - does not render anything when open is false
+ */
+
 describe('LogoutConfirmation', () => {
   const setupElement = (props = {}) => {
     const defaultProps = {

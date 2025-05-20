@@ -3,6 +3,13 @@ import { render } from '@testing-library/react';
 import { PageLoader } from './PageLoader';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+/**
+ * scenario testing
+ *
+ * - PageLoader component
+ *   - renders BlinkBlur loader with primary color
+ */
+
 describe('PageLoader', () => {
   it('renders BlinkBlur loader with primary color', () => {
     const theme = createTheme({
