@@ -7,7 +7,7 @@ const getUsersAct = createAsyncThunk('Users/list', async () => {
   return response;
 });
 
-const initialState = {
+export const initialState = {
   statusList: status.idle,
   userList: [],
 };

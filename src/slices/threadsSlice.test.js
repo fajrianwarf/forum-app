@@ -56,10 +56,15 @@ import { ThreadsService } from '@services/Threads';
  *   - should handle getThreadListAct.pending
  *   - should handle getThreadListAct.fulfilled
  *   - should handle getThreadListAct.rejected
+ * 
+ * 
+ * test scenarios for thunk
+ * 
+ * - getThreadListAct function
  *   - should return thread list on fulfilled
  * 
  * - upVoteThreadAct function
- *   - should remove downvote on rejected upVoteThreadAct
+ *   - should remove upvote on rejected upVoteThreadAct
  *   - should return { threadId, userId } on success
  * 
  * - downVoteThreadAct function
@@ -480,7 +485,7 @@ describe('threadsReducer - extraReducer lifecycle', () => {
   });
 
   describe('upVoteThreadAct', () => {
-    it('should remove downvote on rejected upVoteThreadAct', () => {
+    it('should remove upvote on rejected upVoteThreadAct', () => {
       const state = {
         ...initialState,
         threadList: clone(mockThreadListResponse.data.threads),

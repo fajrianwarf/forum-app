@@ -32,18 +32,27 @@ import {
  *   - should handle login.pending
  *   - should handle login.fulfilled
  *   - should handle login.rejected
- *   - should store token and dispatch getOwnProfileAct
  *
  * - register function
  *   - should handle register.pending
  *   - should handle register.fulfilled
  *   - should handle register.rejected
- *   - should return response on success
  *
  * - getOwnProfile function
  *   - should handle getOwnProfile.pending
  *   - should handle getOwnProfile.fulfilled
  *   - should handle getOwnProfile.rejected
+ * 
+ * 
+ * test scenarios for thunk
+ * 
+ * - login function
+ *   - should store token and dispatch getOwnProfileAct
+ *
+ * - register function
+ *   - should return response on success
+ * 
+ * - getOwnProfile function
  *   - should return user data
  */
 

@@ -7,7 +7,7 @@ const getLeaderboardsAct = createAsyncThunk('Leaderboards/list', async () => {
   return response;
 });
 
-const initialState = {
+export const initialState = {
   statusList: status.idle,
   leaderboardList: [],
 };
